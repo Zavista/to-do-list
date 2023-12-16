@@ -4,10 +4,10 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { faTrash } from "@fortawesome/free-solid-svg-icons" //react automatically import these from fortawesome
 
 
-export const ToDo = () => {
+export const ToDo = ({todo}) => {
   return (
     <div className='Todo'>
-      <p>Go to school</p>
+      <p>{todo.task}</p>
       <div>
         <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
         <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
