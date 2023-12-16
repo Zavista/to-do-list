@@ -21,7 +21,7 @@ export const EditToDoForm = ({editTodo, task}) => {
       className='todo-input' 
       placeholder='Update task'
       onChange={handleChange}></input>
-      <button type='submit' className='todo-btn'>Update Task</button>
+      <button type='submit' className='todo-btn'>Update</button>
     </form>
   )
 }
