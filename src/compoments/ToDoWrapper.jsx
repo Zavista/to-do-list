@@ -12,11 +12,13 @@ export const ToDoWrapper = () => {
       completed: false, 
       isEditing: false
     }
-    setTodos([...todos, newToDo]);
+    setTodos([...todos, newToDo]); //add newToDo to todos
+    console.log(todos);
   }
   return (
     <div className='TodoWrapper'>
-      <ToDoForm></ToDoForm>
+      <ToDoForm addTodo={addTodo}></ToDoForm> 
     </div>
   )
+  //addTodo={addTodo} sends down the function to the TodoForm (which is the child of TodoWrapper)
 }

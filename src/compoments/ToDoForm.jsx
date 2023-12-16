@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-export const ToDoForm = () => {
+export const ToDoForm = ({addTodo}) => { //note addTodo is sent down by ToDoWrapper. Also {addTodo} is a different way of writing props.addTodo
   const [value, setValue] = useState('');
 
   const handleChange = (e) => {
@@ -10,7 +10,7 @@ export const ToDoForm = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault(); //prevents the page from reloading after form submission.
-    console.log(value); //from the State value
+    addTodo(value); //adds value into todos from ToDoWrapper
   }
 
   return (
