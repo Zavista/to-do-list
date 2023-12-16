@@ -18,11 +18,12 @@ export const ToDoWrapper = () => {
   }
   return (
     <div className='TodoWrapper'>
-      <ToDoForm addTodo={addTodo}></ToDoForm>
-      {todos.map((todo) =>{
-        <ToDo todo={todo} key={todo.id}></ToDo>
-      })}
+      <ToDoForm addTodo={addTodo} />
+      {todos.map((todo) => (
+        <ToDo task={todo.task} key={todo.id} />
+      ))}
     </div>
   )
   //addTodo={addTodo} sends down the function to the TodoForm (which is the child of TodoWrapper)
+  //map each todo in todos and create a ToDo. key is for React rendering. 
 }
