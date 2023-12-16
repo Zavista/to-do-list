@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ToDoForm } from './ToDoForm'
 import { v4 as uuidv4 } from 'uuid';
 import { ToDo } from './ToDo';
+import { EditToDoForm } from './EditToDoForm';
 
 export const ToDoWrapper = () => {
   const [todos, setTodos] = useState([]);
@@ -30,9 +31,13 @@ export const ToDoWrapper = () => {
     //basically we filter any todo with the same id as id, everything else, is not filtered
   }
 
-  const editTodo = () => {
-    setTodos(todos.map(todo => todo.id === id ? {...todo, isEditing: !(todo.isEditing)} : todo))
+  const editTodo = (id) => {
+    setTodos(todos.map(todo => todo.id === id ? {...todo, isEditing: !todo.isEditing} : todo))
     //basically for each todo in todos, if todo.id === id, we update the isEditing, else we do nothing
+  }
+
+  const editTask = (task, id) => {
+    setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo))
   }
 
   return (
@@ -40,7 +45,11 @@ export const ToDoWrapper = () => {
       <h1>To-Do List</h1>
       <ToDoForm addTodo={addTodo} />
       {todos.map((todo) => (
-        <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/>
+        todo.isEditing ? (
+          <EditToDoForm editTodo={editTask} task={todo} id={todo.id} key={todo.id}/>
+         ) : (
+          <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/>
+         )
       ))}
     </div>
   )
