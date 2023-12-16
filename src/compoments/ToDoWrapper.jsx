@@ -24,12 +24,17 @@ export const ToDoWrapper = () => {
     
     //This means that if our completed was true, when we click our todo, we set it to false, and then we remove the class from it
   }
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+    //basically we filter any todo with the same id as id, everything else, is not filtered
+  }
   return (
     <div className='TodoWrapper'>
       <h1>To-Do List</h1>
       <ToDoForm addTodo={addTodo} />
       {todos.map((todo) => (
-        <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} />
+        <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
       ))}
     </div>
   )
