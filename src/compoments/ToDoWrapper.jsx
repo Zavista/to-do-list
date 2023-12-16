@@ -36,8 +36,8 @@ export const ToDoWrapper = () => {
     //basically for each todo in todos, if todo.id === id, we update the isEditing, else we do nothing
   }
 
-  const editTask = (task, id) => {
-    setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo))
+  const editTask = (value, id) => {
+    setTodos(todos.map(todo => todo.id === id ? {...todo, task: value, isEditing: !todo.isEditing} : todo))
   }
 
   return (
@@ -46,7 +46,7 @@ export const ToDoWrapper = () => {
       <ToDoForm addTodo={addTodo} />
       {todos.map((todo) => (
         todo.isEditing ? (
-          <EditToDoForm editTodo={editTask} task={todo} id={todo.id} key={todo.id}/>
+          <EditToDoForm editTask={editTask} task={todo} id={todo.id} key={todo.id}/>
          ) : (
           <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/>
          )

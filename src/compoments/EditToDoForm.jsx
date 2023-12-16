@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-export const EditToDoForm = ({editTodo, task}) => {
+export const EditToDoForm = ({editTask, task}) => {
   const [value, setValue] = useState(task.task);
 
   const handleChange = (e) => {
@@ -10,7 +10,7 @@ export const EditToDoForm = ({editTodo, task}) => {
 
   const handleSubmit = (e) =>{
     e.preventDefault(); 
-    editTodo(value, task.id);
+    editTask(value, task.id);
     setValue(""); 
   }
 
