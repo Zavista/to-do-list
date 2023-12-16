@@ -4,14 +4,15 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { faTrash } from "@fortawesome/free-solid-svg-icons" //react automatically import these from fortawesome
 
 
-export const ToDo = ({todo, toggleComplete, deleteTodo}) => {
+export const ToDo = ({todo, toggleComplete, deleteTodo, editTodo}) => {
   return (
     <div className='Todo'>
       <p 
       onClick={()=> toggleComplete(todo.id)}
       className={`${todo.completed ? 'completed' : ""}`}>{todo.task}</p>
       <div>
-        <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faPenToSquare
+        onclick={() => editTodo(todo.id)}}></FontAwesomeIcon>
         <FontAwesomeIcon icon={faTrash}
         onClick={() => deleteTodo(todo.id)}></FontAwesomeIcon>
       </div>

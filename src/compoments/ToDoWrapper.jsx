@@ -29,12 +29,18 @@ export const ToDoWrapper = () => {
     setTodos(todos.filter(todo => todo.id !== id));
     //basically we filter any todo with the same id as id, everything else, is not filtered
   }
+
+  const editTodo = () => {
+    setTodos(todos.map(todo => todo.id === id ? {...todo, isEditing: !(todo.isEditing)} : todo))
+    //basically for each todo in todos, if todo.id === id, we update the isEditing, else we do nothing
+  }
+
   return (
     <div className='TodoWrapper'>
       <h1>To-Do List</h1>
       <ToDoForm addTodo={addTodo} />
       {todos.map((todo) => (
-        <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+        <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/>
       ))}
     </div>
   )
