@@ -11,11 +11,13 @@ export const ToDoForm = ({addTodo}) => { //note addTodo is sent down by ToDoWrap
   const handleSubmit = (e) =>{
     e.preventDefault(); //prevents the page from reloading after form submission.
     addTodo(value); //adds value into todos from ToDoWrapper
+    setValue(""); //resets the value
   }
 
   return (
     <form className='TodoForm' onSubmit={handleSubmit}>
-      <input type='text' 
+      <input type='text'
+      value={value} 
       className='todo-input' 
       placeholder='What is the task today>'
       onChange={handleChange}></input>
