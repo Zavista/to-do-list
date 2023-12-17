@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ToDoForm } from './ToDoForm'
 import { v4 as uuidv4 } from 'uuid';
 import { ToDo } from './ToDo';
@@ -46,7 +46,7 @@ export const ToDoWrapper = () => {
       <ToDoForm addTodo={addTodo} />
       {todos.map((todo) => (
         todo.isEditing ? (
-          <EditToDoForm editTask={editTask} task={todo} id={todo.id} key={todo.id}/>
+          <EditToDoForm editTask={editTask} todo={todo} id={todo.id} key={todo.id}/>
          ) : (
           <ToDo todo={todo} key={todo.id} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/>
          )

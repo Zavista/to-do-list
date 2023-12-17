@@ -1,8 +1,15 @@
-import React from 'react'
 import { useState } from 'react'
 
-export const EditToDoForm = ({editTask, task}) => {
-  const [value, setValue] = useState(task.task);
+import PropTypes from 'prop-types';
+
+EditToDoForm.propTypes = {
+  todo: PropTypes.object,
+  editTask: PropTypes.func,
+}
+
+
+export const EditToDoForm = ({editTask, todo}) => {
+  const [value, setValue] = useState(todo.task);
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -10,7 +17,7 @@ export const EditToDoForm = ({editTask, task}) => {
 
   const handleSubmit = (e) =>{
     e.preventDefault(); 
-    editTask(value, task.id);
+    editTask(value, todo.id);
     setValue(""); 
   }
 

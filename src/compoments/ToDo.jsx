@@ -1,7 +1,15 @@
-import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { faTrash } from "@fortawesome/free-solid-svg-icons" //react automatically import these from fortawesome
+
+import PropTypes from 'prop-types';
+
+ToDo.propTypes = {
+  todo: PropTypes.object,
+  toggleComplete: PropTypes.func,
+  deleteTodo: PropTypes.func,
+  editTodo: PropTypes.func,
+}
 
 export const ToDo = ({todo, toggleComplete, deleteTodo, editTodo}) => {
   return (

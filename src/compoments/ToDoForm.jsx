@@ -1,5 +1,11 @@
-import React from 'react'
 import { useState } from 'react'
+
+import PropTypes from 'prop-types';
+
+ToDoForm.propTypes = {
+  addTodo: PropTypes.func,
+}
+
 
 export const ToDoForm = ({addTodo}) => { //note addTodo is sent down by ToDoWrapper. Also {addTodo} is a different way of writing props.addTodo
   const [value, setValue] = useState('');
